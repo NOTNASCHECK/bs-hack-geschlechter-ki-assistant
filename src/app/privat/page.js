@@ -33,7 +33,7 @@ const Privat = () => {
 
     // Sende die Anfrage an den Endpoint
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch("https://bs-hack-geschlechter-ki-assistant-h25sxdux2.vercel.app", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
