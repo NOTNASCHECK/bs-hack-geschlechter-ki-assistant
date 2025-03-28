@@ -14,12 +14,14 @@ const Privat = () => {
 
   const [recommendation, setRecommendation] = useState('');
   const [isCollapsed, setIsCollapsed] = useState({
-    summary: false,
-    feedback: false,
-    deviations: false,
-    sources: false,
-    recommendations: false,
+    summary: true,
+    feedback: true,
+    deviations: true,
+    sources: true,
+    recommendations: true,
   });
+  
+  const [isLoading, setIsLoading] = useState(false);
 
   const apiUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api/schnipsel` : 'http://localhost:3000/api/schnipsel';
 
@@ -30,6 +32,7 @@ const Privat = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const { name, age, gender, condition, treatment, bloodPressure, notes } = formData;
 
     const requestText = `Name: ${name}, Alter: ${age}, Geschlecht: ${gender}, Krankheit: ${condition}, Behandlung: ${treatment}, Blutdruck: ${bloodPressure}, Notizen: ${notes}`;
@@ -67,6 +70,8 @@ const Privat = () => {
     } catch (error) {
       console.error('Fehler:', error);
       setRecommendation('Es gab einen Fehler bei der Verarbeitung Ihrer Anfrage.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -123,9 +128,10 @@ const Privat = () => {
         </button>
         <button 
           type="submit" 
-          className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out w-full"
+          className={`bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out w-full ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+          disabled={isLoading}
         >
-          Recherche starten
+          {isLoading ? 'Lade...' : 'Recherche starten'}
         </button>
       </form>
       {recommendation && (
