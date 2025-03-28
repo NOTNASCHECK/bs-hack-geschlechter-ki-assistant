@@ -30,7 +30,7 @@ const Privat = () => {
     console.log(requestText);
 
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch("https://bs-hack-geschlechter-ki-assistant.vercel.app/api/schnipsel", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
