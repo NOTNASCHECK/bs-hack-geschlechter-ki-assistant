@@ -21,7 +21,14 @@ export async function POST(request) {
       documents: documents,
     });
 
-    const response = new Response(JSON.stringify(chatResponse), { status: 200 });
+    const response = new Response(JSON.stringify(chatResponse), { 
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://bs-hack-geschlechter-ki-assistant-h25sxdux2.vercel.app',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+    });
     
 
     return response;
