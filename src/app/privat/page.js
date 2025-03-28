@@ -13,6 +13,13 @@ const Privat = () => {
   });
 
   const [recommendation, setRecommendation] = useState('');
+  const [isCollapsed, setIsCollapsed] = useState({
+    summary: false,
+    feedback: false,
+    deviations: false,
+    sources: false,
+    recommendations: false,
+  });
 
   const apiUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api/schnipsel` : 'http://localhost:3000/api/schnipsel';
 
@@ -57,6 +64,10 @@ const Privat = () => {
       console.error('Fehler:', error);
       setRecommendation('Es gab einen Fehler bei der Verarbeitung Ihrer Anfrage.');
     }
+  };
+
+  const toggleCollapse = (section) => {
+    setIsCollapsed((prev) => ({ ...prev, [section]: !prev[section] }));
   };
 
   return (
@@ -115,20 +126,30 @@ const Privat = () => {
       </form>
       {recommendation && (
         <div className="mt-8 p-4 border border-gray-300 rounded bg-gray-100 w-1/2 text-black">
-          <h2 className="text-xl font-semibold">1. ZUSAMMENFASSUNG:</h2>
-          <p>{recommendation.split('2. FEEDBACK:')[0]}</p>
+          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('summary')}>
+            1. ZUSAMMENFASSUNG:
+          </h2>
+          {!isCollapsed.summary && <p>{recommendation.split('2. FEEDBACK:')[0]}</p>}
 
-          <h2 className="text-xl font-semibold">2. FEEDBACK:</h2>
-          <p>{recommendation.split('2. FEEDBACK:')[1].split('3. ABWEICHUNGEN:')[0]}</p>
+          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('feedback')}>
+            2. FEEDBACK:
+          </h2>
+          {!isCollapsed.feedback && <p>{recommendation.split('2. FEEDBACK:')[1].split('3. ABWEICHUNGEN:')[0]}</p>}
 
-          <h2 className="text-xl font-semibold">3. ABWEICHUNGEN:</h2>
-          <p>{recommendation.split('3. ABWEICHUNGEN:')[1].split('4. QUELLENVERWEIS:')[0]}</p>
+          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('deviations')}>
+            3. ABWEICHUNGEN:
+          </h2>
+          {!isCollapsed.deviations && <p>{recommendation.split('3. ABWEICHUNGEN:')[1].split('4. QUELLENVERWEIS:')[0]}</p>}
 
-          <h2 className="text-xl font-semibold">4. QUELLENVERWEIS:</h2>
-          <p>{recommendation.split('4. QUELLENVERWEIS:')[1].split('5. EMPFEHLUNGEN:')[0]}</p>
+          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('sources')}>
+            4. QUELLENVERWEIS:
+          </h2>
+          {!isCollapsed.sources && <p>{recommendation.split('4. QUELLENVERWEIS:')[1].split('5. EMPFEHLUNGEN:')[0]}</p>}
 
-          <h2 className="text-xl font-semibold">5. EMPFEHLUNGEN:</h2>
-          <p>{recommendation.split('5. EMPFEHLUNGEN:')[1]}</p>
+          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('recommendations')}>
+            5. EMPFEHLUNGEN:
+          </h2>
+          {!isCollapsed.recommendations && <p>{recommendation.split('5. EMPFEHLUNGEN:')[1]}</p>}
         </div>
       )}
     </div>
