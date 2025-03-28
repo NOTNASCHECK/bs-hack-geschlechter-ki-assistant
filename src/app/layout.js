@@ -19,13 +19,16 @@ export const metadata = {
 };
 
 const Header = () => (
-  <header className="bg-blue-600 text-white p-4 w-full">
-    <h1 className="text-2xl font-bold">Medizinischer KI-Assistent</h1>
-    <nav>
-      <Link href="/" className="text-white mr-4">Home</Link>
-      <Link href="/privat" className="text-white mr-4">Privat</Link>
-      <Link href="/professionell" className="text-white">Professionell</Link>
-    </nav>
+  <header className="bg-blue-600 text-white p-4 w-full flex items-center">
+    <img src="/genereiere logo für medizinischen ki assistant.png" alt="Logo" className="h-24" />
+    <div className="flex flex-col ml-4">
+      <h1 className="text-4xl font-bold">Medizinischer KI-Assistent</h1>
+      <nav>
+        <Link href="/" className="text-white text-lg mr-4">Home</Link>
+        <Link href="/privat" className="text-white text-lg mr-4">Privat</Link>
+        <Link href="/professionell" className="text-white text-lg">Professionell</Link>
+      </nav>
+    </div>
   </header>
 );
 

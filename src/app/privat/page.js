@@ -79,6 +79,12 @@ const Privat = () => {
     setIsCollapsed((prev) => ({ ...prev, [section]: !prev[section] }));
   };
 
+  const summary = recommendation ? recommendation.split('2. KLINISCHES FEEDBACK:')[0] : '';
+  const feedback = recommendation ? recommendation.split('2. KLINISCHES FEEDBACK:')[1]?.split('3. ABWEICHUNGEN VOM STANDARD:')[0] : '';
+  const deviations = recommendation ? recommendation.split('3. ABWEICHUNGEN VOM STANDARD:')[1]?.split('4. MEDIZINISCHE EMPFEHLUNGEN:')[0] : '';
+  const recommendations = recommendation ? recommendation.split('4. MEDIZINISCHE EMPFEHLUNGEN:')[1]?.split('5. MEDIZINISCHE QUELLENVERWEISE:')[0] : '';
+  const sources = recommendation ? recommendation.split('5. MEDIZINISCHE QUELLENVERWEISE:')[1] : '';
+
   return (
     <div className="flex flex-col bg-background text-foreground items-center justify-center custom-div">
       <h2 className="text-4xl font-bold mb-4">Patientenspezifikation</h2>
@@ -142,7 +148,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('summary')} className="text-blue-500">
             {isCollapsed.summary ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.summary && <p>{recommendation.split('2. FEEDBACK:')[0]}</p>}
+          {!isCollapsed.summary && <p>{summary}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('feedback')}>
             2. FEEDBACK:
@@ -150,7 +156,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('feedback')} className="text-blue-500">
             {isCollapsed.feedback ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.feedback && <p>{recommendation.split('2. FEEDBACK:')[1].split('3. ABWEICHUNGEN:')[0]}</p>}
+          {!isCollapsed.feedback && <p>{feedback}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('deviations')}>
             3. ABWEICHUNGEN:
@@ -158,7 +164,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('deviations')} className="text-blue-500">
             {isCollapsed.deviations ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.deviations && <p>{recommendation.split('3. ABWEICHUNGEN:')[1].split('4. EMPFEHLUNGEN:')[0]}</p>}
+          {!isCollapsed.deviations && <p>{deviations}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('recommendations')}>
             4. EMPFEHLUNGEN:
@@ -166,7 +172,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('recommendations')} className="text-blue-500">
             {isCollapsed.recommendations ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.recommendations && <p>{recommendation.split('4. EMPFEHLUNGEN:')[1].split('5. QUELLENVERWEISE:')[0]}</p>}
+          {!isCollapsed.recommendations && <p>{recommendations}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('sources')}>
             5. QUELLENVERWEISE:
@@ -174,7 +180,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('sources')} className="text-blue-500">
             {isCollapsed.sources ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.sources && <p>{recommendation.split('5. QUELLENVERWEISE:')[1]}</p>}
+          {!isCollapsed.sources && <p>{sources}</p>}
         </div>
       )}
     </div>
