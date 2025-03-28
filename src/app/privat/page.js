@@ -115,10 +115,20 @@ const Privat = () => {
       </form>
       {recommendation && (
         <div className="mt-8 p-4 border border-gray-300 rounded bg-gray-100 w-1/2 text-black">
-          <h2 className="text-xl font-semibold">Recommendation:</h2>
-          <p>{recommendation.split('Splitter')[0]}</p>
-          <h2 className="text-xl font-semibold">Source:</h2>
-          <p>{recommendation.split('Splitter')[1]}</p>
+          <h2 className="text-xl font-semibold">1. ZUSAMMENFASSUNG:</h2>
+          <p>{recommendation.split('2. FEEDBACK:')[0]}</p>
+
+          <h2 className="text-xl font-semibold">2. FEEDBACK:</h2>
+          <p>{recommendation.split('2. FEEDBACK:')[1].split('3. ABWEICHUNGEN:')[0]}</p>
+
+          <h2 className="text-xl font-semibold">3. ABWEICHUNGEN:</h2>
+          <p>{recommendation.split('3. ABWEICHUNGEN:')[1].split('4. QUELLENVERWEIS:')[0]}</p>
+
+          <h2 className="text-xl font-semibold">4. QUELLENVERWEIS:</h2>
+          <p>{recommendation.split('4. QUELLENVERWEIS:')[1].split('5. EMPFEHLUNGEN:')[0]}</p>
+
+          <h2 className="text-xl font-semibold">5. EMPFEHLUNGEN:</h2>
+          <p>{recommendation.split('5. EMPFEHLUNGEN:')[1]}</p>
         </div>
       )}
     </div>
