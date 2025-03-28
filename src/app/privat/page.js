@@ -80,7 +80,7 @@ const Privat = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground items-center justify-center">
+    <div className="flex flex-col bg-background text-foreground items-center justify-center custom-div">
       <h2 className="text-4xl font-bold mb-4">Patientenspezifikation</h2>
       <form onSubmit={handleSubmit} className="w-1/2">
         <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} className="p-2 border border-gray-300 rounded mb-4 w-full" />
@@ -135,7 +135,7 @@ const Privat = () => {
         </button>
       </form>
       {recommendation && (
-        <div className="mt-8 p-4 border border-gray-300 rounded bg-gray-100 w-1/2 text-black">
+        <div className="mt-4 p-4 border border-gray-300 rounded bg-gray-100 w-1/2 text-black">
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('summary')}>
             1. ZUSAMMENFASSUNG:
           </h2>

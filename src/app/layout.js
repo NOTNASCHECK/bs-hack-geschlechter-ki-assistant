@@ -29,12 +29,19 @@ const Header = () => (
   </header>
 );
 
+const Footer = () => (
+  <footer className="bg-gray-800 text-white p-4 w-full fixed bottom-0 text-center">
+    <p>&copy; {new Date().getFullYear()} Medizinischer KI-Assistent. Alle Rechte vorbehalten.</p>
+  </footer>
+);
+
 const RootLayout = ({ children }) => {
   return (
     <html lang="de">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
