@@ -117,7 +117,7 @@ const Privat = () => {
         </button>
       </form>
       {recommendation && (
-        <div className="mt-8 p-4 border border-gray-300 rounded bg-gray-100 w-1/2">
+        <div className="mt-8 p-4 border border-gray-300 rounded bg-gray-100 w-1/2 text-black">
           <h2 className="text-xl font-semibold">Recommendation:</h2>
           <p>{recommendation.split('Splitter')[0]}</p>
           <h2 className="text-xl font-semibold">Source:</h2>
