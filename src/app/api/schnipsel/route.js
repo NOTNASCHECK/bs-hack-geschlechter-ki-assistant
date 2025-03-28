@@ -30,7 +30,6 @@ export async function POST(request) {
       },
     });
     
-
     return response;
   } catch (error) {
     return new Response(JSON.stringify({ message: 'Fehler beim Abrufen der Antwort' }), { status: 500 });
