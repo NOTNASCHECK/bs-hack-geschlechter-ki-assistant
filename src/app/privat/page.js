@@ -51,6 +51,7 @@ const Privat = () => {
       }
 
       const data = await response.json();
+      setRecommendation(data.choices[0].message.content);
       console.log(data);
     } catch (error) {
       console.error('Fehler:', error);
