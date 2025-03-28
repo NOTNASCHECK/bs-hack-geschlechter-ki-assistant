@@ -43,7 +43,7 @@ const RootLayout = ({ children }) => {
     <html lang="de">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
-        {children}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
