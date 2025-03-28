@@ -136,7 +136,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('summary')} className="text-blue-500">
             {isCollapsed.summary ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.summary && recommendation && <p>{recommendation.split('2. FEEDBACK:')[0]}</p>}
+          {!isCollapsed.summary && <p>{recommendation.split('2. FEEDBACK:')[0]}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('feedback')}>
             2. FEEDBACK:
@@ -144,7 +144,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('feedback')} className="text-blue-500">
             {isCollapsed.feedback ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.feedback && recommendation && <p>{recommendation.split('2. FEEDBACK:')[1].split('3. ABWEICHUNGEN:')[0]}</p>}
+          {!isCollapsed.feedback && <p>{recommendation.split('2. FEEDBACK:')[1].split('3. ABWEICHUNGEN:')[0]}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('deviations')}>
             3. ABWEICHUNGEN:
@@ -152,23 +152,23 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('deviations')} className="text-blue-500">
             {isCollapsed.deviations ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.deviations && recommendation && <p>{recommendation.split('3. ABWEICHUNGEN:')[1].split('4. QUELLENVERWEIS:')[0]}</p>}
-
-          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('sources')}>
-            4. QUELLENVERWEIS:
-          </h2>
-          <button onClick={() => toggleCollapse('sources')} className="text-blue-500">
-            {isCollapsed.sources ? 'Mehr anzeigen' : 'Weniger anzeigen'}
-          </button>
-          {!isCollapsed.sources && recommendation && <p>{recommendation.split('4. QUELLENVERWEIS:')[1].split('5. EMPFEHLUNGEN:')[0]}</p>}
+          {!isCollapsed.deviations && <p>{recommendation.split('3. ABWEICHUNGEN:')[1].split('4. EMPFEHLUNGEN:')[0]}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('recommendations')}>
-            5. EMPFEHLUNGEN:
+            4. EMPFEHLUNGEN:
           </h2>
           <button onClick={() => toggleCollapse('recommendations')} className="text-blue-500">
             {isCollapsed.recommendations ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.recommendations && recommendation && <p>{recommendation.split('5. EMPFEHLUNGEN:')[1]}</p>}
+          {!isCollapsed.recommendations && <p>{recommendation.split('4. EMPFEHLUNGEN:')[1].split('5. QUELLENVERWEISE:')[0]}</p>}
+
+          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('sources')}>
+            5. QUELLENVERWEISE:
+          </h2>
+          <button onClick={() => toggleCollapse('sources')} className="text-blue-500">
+            {isCollapsed.sources ? 'Mehr anzeigen' : 'Weniger anzeigen'}
+          </button>
+          {!isCollapsed.sources && <p>{recommendation.split('5. QUELLENVERWEISE:')[1]}</p>}
         </div>
       )}
     </div>
