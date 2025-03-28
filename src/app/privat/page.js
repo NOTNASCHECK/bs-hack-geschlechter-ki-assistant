@@ -35,6 +35,7 @@ const Privat = () => {
     try {
       const response = await fetch("https://bs-hack-geschlechter-ki-assistant-h25sxdux2.vercel.app/api/schnipsel", {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -48,16 +49,7 @@ const Privat = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Fehler beim Senden der Anfrage');
-      }
-
-      const data = await response.json();
-      console.log('Antwort vom Server:', data);
-
-      // Setze die Empfehlung basierend auf der Antwort des Servers
-      setRecommendation(data.choices[0].message.content);
-      console.log(data.choices[0].message.content);
+      console.log('Anfrage gesendet, aber keine Antwort im no-cors Modus verfügbar.');
     } catch (error) {
       console.error('Fehler:', error);
       setRecommendation('Es gab einen Fehler bei der Verarbeitung Ihrer Anfrage.');
