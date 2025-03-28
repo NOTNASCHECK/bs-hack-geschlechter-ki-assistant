@@ -58,7 +58,11 @@ const Privat = () => {
       }
 
       const data = await response.json();
-      setRecommendation(data.choices[0].message.content);
+      if (data.choices && data.choices.length > 0) {
+        setRecommendation(data.choices[0].message.content);
+      } else {
+        setRecommendation('Keine gültige Antwort erhalten.');
+      }
       console.log(data);
     } catch (error) {
       console.error('Fehler:', error);
@@ -132,7 +136,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('summary')} className="text-blue-500">
             {isCollapsed.summary ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.summary && <p>{recommendation.split('2. FEEDBACK:')[0]}</p>}
+          {!isCollapsed.summary && recommendation && <p>{recommendation.split('2. FEEDBACK:')[0]}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('feedback')}>
             2. FEEDBACK:
@@ -140,7 +144,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('feedback')} className="text-blue-500">
             {isCollapsed.feedback ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.feedback && <p>{recommendation.split('2. FEEDBACK:')[1].split('3. ABWEICHUNGEN:')[0]}</p>}
+          {!isCollapsed.feedback && recommendation && <p>{recommendation.split('2. FEEDBACK:')[1].split('3. ABWEICHUNGEN:')[0]}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('deviations')}>
             3. ABWEICHUNGEN:
@@ -148,7 +152,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('deviations')} className="text-blue-500">
             {isCollapsed.deviations ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.deviations && <p>{recommendation.split('3. ABWEICHUNGEN:')[1].split('4. QUELLENVERWEIS:')[0]}</p>}
+          {!isCollapsed.deviations && recommendation && <p>{recommendation.split('3. ABWEICHUNGEN:')[1].split('4. QUELLENVERWEIS:')[0]}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('sources')}>
             4. QUELLENVERWEIS:
@@ -156,7 +160,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('sources')} className="text-blue-500">
             {isCollapsed.sources ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.sources && <p>{recommendation.split('4. QUELLENVERWEIS:')[1].split('5. EMPFEHLUNGEN:')[0]}</p>}
+          {!isCollapsed.sources && recommendation && <p>{recommendation.split('4. QUELLENVERWEIS:')[1].split('5. EMPFEHLUNGEN:')[0]}</p>}
 
           <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('recommendations')}>
             5. EMPFEHLUNGEN:
@@ -164,7 +168,7 @@ const Privat = () => {
           <button onClick={() => toggleCollapse('recommendations')} className="text-blue-500">
             {isCollapsed.recommendations ? 'Mehr anzeigen' : 'Weniger anzeigen'}
           </button>
-          {!isCollapsed.recommendations && <p>{recommendation.split('5. EMPFEHLUNGEN:')[1]}</p>}
+          {!isCollapsed.recommendations && recommendation && <p>{recommendation.split('5. EMPFEHLUNGEN:')[1]}</p>}
         </div>
       )}
     </div>
