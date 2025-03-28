@@ -13,6 +13,7 @@ const Home = () => {
       <main className="flex flex-col items-center justify-center flex-grow">
         <h2 className="text-4xl font-bold mb-4">Willkommen beim Medizinischen KI-Assistenten</h2>
         <p>Bitte wählen Sie einen Bereich aus der Navigation.</p>
+        <img src="/qr-code.svg" alt="QR Code" className="mt-4" width="300" height="300" />
       </main>
       <Footer />
     </div>
