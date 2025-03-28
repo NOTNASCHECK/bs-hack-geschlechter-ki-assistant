@@ -14,6 +14,8 @@ const Privat = () => {
 
   const [recommendation, setRecommendation] = useState('');
 
+  const apiUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api/schnipsel` : 'http://localhost:3000/api/schnipsel';
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -31,7 +33,7 @@ const Privat = () => {
 
     // Sende die Anfrage an den Endpoint
     try {
-      const response = await fetch('https://bs-hack-geschlechter-ki-assistant-kvvy7rc43.vercel.app/api/schnipsel', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
