@@ -25,19 +25,16 @@ const Privat = () => {
     e.preventDefault();
     const { name, age, gender, condition, treatment, bloodPressure, notes } = formData;
 
-    // Erstelle den zusammenhängenden Text
     const requestText = `Name: ${name}, Alter: ${age}, Geschlecht: ${gender}, Krankheit: ${condition}, Behandlung: ${treatment}, Blutdruck: ${bloodPressure}, Notizen: ${notes}`;
 
-    // Gebe den Text in der Konsole aus
     console.log(requestText);
 
-    // Sende die Anfrage an den Endpoint
     try {
-      const response = await fetch("https://bs-hack-geschlechter-ki-assistant-h25sxdux2.vercel.app/api/schnipsel", {
+      const response = await fetch(apiUrl, {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.MISTRAL_API_KEY}`,
         },
         body: JSON.stringify({
           messages: [
@@ -49,7 +46,12 @@ const Privat = () => {
         }),
       });
 
-      console.log('Anfrage gesendet, aber keine Antwort im no-cors Modus verfügbar.');
+      if (!response.ok) {
+        throw new Error('Netzwerkantwort war nicht ok.');
+      }
+
+      const data = await response.json();
+      console.log(data);
     } catch (error) {
       console.error('Fehler:', error);
       setRecommendation('Es gab einen Fehler bei der Verarbeitung Ihrer Anfrage.');
