@@ -22,6 +22,7 @@ const Header = () => (
   <header className="bg-blue-600 text-white p-4 w-full">
     <h1 className="text-2xl font-bold">Medizinischer KI-Assistent</h1>
     <nav>
+      <Link href="/" className="text-white mr-4">Home</Link>
       <Link href="/privat" className="text-white mr-4">Privat</Link>
       <Link href="/professionell" className="text-white">Professionell</Link>
     </nav>
