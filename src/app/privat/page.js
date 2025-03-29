@@ -8,6 +8,10 @@ const Privat = () => {
     gender: '',
     condition: '',
     treatment: '',
+    dosage: '',
+    morning: '',
+    noon: '',
+    evening: '',
     bloodPressure: '',
     notes: '',
   });
@@ -33,9 +37,9 @@ const Privat = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const { name, age, gender, condition, treatment, bloodPressure, notes } = formData;
+    const { name, age, gender, condition, treatment, dosage, morning, noon, evening, bloodPressure, notes } = formData;
 
-    const requestText = `Name: ${name}, Alter: ${age}, Geschlecht: ${gender}, Krankheit: ${condition}, Behandlung: ${treatment}, Blutdruck: ${bloodPressure}, Notizen: ${notes}`;
+    const requestText = `Name: ${name}, Alter: ${age}, Geschlecht: ${gender}, Krankheit: ${condition}, Behandlung: ${treatment}, Dosierung: ${dosage}, Morgens: ${morning}, Mittags: ${noon}, Abends: ${evening}, Blutdruck: ${bloodPressure}, Notizen: ${notes}`;
 
     console.log(requestText);
 
@@ -98,7 +102,48 @@ const Privat = () => {
           <option value="other">Andere</option>
         </select>
         <input type="text" name="condition" placeholder="Krankheit" value={formData.condition} onChange={handleChange} className="p-2 border border-gray-300 rounded mb-4 w-full" />
-        <input type="text" name="treatment" placeholder="Behandlung" value={formData.treatment} onChange={handleChange} className="p-2 border border-gray-300 rounded mb-4 w-full" />
+        <div className="flex mb-4">
+          <input 
+            type="text" 
+            name="treatment" 
+            placeholder="Wirkstoff (z.B. Amlodipin)" 
+            value={formData.treatment} 
+            onChange={handleChange} 
+            className="p-2 border border-gray-300 rounded w-2/3 mr-2" 
+          />
+          <input 
+            type="text" 
+            name="dosierung" 
+            placeholder="Dosierung (z.B. 5mg )" 
+            value={formData.dosage} 
+            onChange={handleChange} 
+            className="p-2 border border-gray-300 rounded w-2/3 mr-2" 
+          />
+          <input 
+            type="text" 
+            name="morning" 
+            placeholder="Morgens" 
+            value={formData.morning} 
+            onChange={handleChange} 
+            className="p-2 border border-gray-300 rounded w-1/4 mr-2" 
+          />
+          <input 
+            type="text" 
+            name="noon" 
+            placeholder="Mittags" 
+            value={formData.noon} 
+            onChange={handleChange} 
+            className="p-2 border border-gray-300 rounded w-1/4 mr-2" 
+          />
+          <input 
+            type="text" 
+            name="evening" 
+            placeholder="Abends" 
+            value={formData.evening} 
+            onChange={handleChange} 
+            className="p-2 border border-gray-300 rounded w-1/4" 
+          />
+        </div>
         <input type="text" name="bloodPressure" placeholder="Blutdruck (z.B. 145/90)" value={formData.bloodPressure} onChange={handleChange} className="p-2 border border-gray-300 rounded mb-4 w-full" />
         <textarea 
           name="notes" 
@@ -125,7 +170,11 @@ const Privat = () => {
             age: '55',
             gender: 'male',
             condition: 'Bluthochdruck',
-            treatment: 'Amlodipine 5mg täglich',
+            treatment: 'Amlodipin',
+            dosage: '5mg',
+            morning: '1',
+            noon: '0',
+            evening: '0',
             bloodPressure: '145/90',
             notes: 'Keine besonderen Anmerkungen'
           })} 
