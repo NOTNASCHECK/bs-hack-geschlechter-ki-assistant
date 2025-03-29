@@ -86,7 +86,7 @@ const Privat = () => {
   const sources = recommendation ? recommendation.split('5. MEDIZINISCHE QUELLENVERWEISE:')[1] : '';
 
   return (
-    <div className="flex flex-col bg-background text-foreground items-center justify-center custom-div">
+    <div className="flex flex-col bg-background text-foreground items-center justify-center custom-div my-10">
       <h2 className="text-4xl font-bold mb-4">Patientenspezifikation</h2>
       <form onSubmit={handleSubmit} className="w-1/2">
         <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} className="p-2 border border-gray-300 rounded mb-4 w-full" />
