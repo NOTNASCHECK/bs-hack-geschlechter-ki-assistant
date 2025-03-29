@@ -117,7 +117,7 @@ const Professionell = () => {
           </div>
         </div>
       )}
-      <h2 className="text-4xl font-bold mb-4">Definition Merkmale durch Facharzt</h2>
+      <h2 className="text-4xl font-bold mb-4">Definition vom Merkmal</h2>
       <form onSubmit={handleSubmit} className="w-1/2 space-y-4">
         <input
           type="text"
