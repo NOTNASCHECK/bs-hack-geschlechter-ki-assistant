@@ -81,6 +81,12 @@ const Privat = () => {
 
   const toggleCollapse = (section) => {
     setIsCollapsed((prev) => ({ ...prev, [section]: !prev[section] }));
+    
+    // Scrollen Sie zum entsprechenden Abschnitt
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const summary = recommendation ? recommendation.split('2. KLINISCHES FEEDBACK:')[0] : '';
@@ -192,7 +198,7 @@ const Privat = () => {
       </form>
       {recommendation && (
         <div className="mt-4 p-4 border border-gray-300 rounded bg-gray-100 w-1/2 text-black">
-          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('summary')}>
+          <h2 id="summary" className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('summary')}>
             1. ZUSAMMENFASSUNG:
           </h2>
           <button onClick={() => toggleCollapse('summary')} className="text-blue-500">
@@ -200,7 +206,7 @@ const Privat = () => {
           </button>
           {!isCollapsed.summary && <p>{summary}</p>}
 
-          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('feedback')}>
+          <h2 id="feedback" className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('feedback')}>
             2. FEEDBACK:
           </h2>
           <button onClick={() => toggleCollapse('feedback')} className="text-blue-500">
@@ -208,7 +214,7 @@ const Privat = () => {
           </button>
           {!isCollapsed.feedback && <p>{feedback}</p>}
 
-          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('deviations')}>
+          <h2 id="deviations" className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('deviations')}>
             3. ABWEICHUNGEN:
           </h2>
           <button onClick={() => toggleCollapse('deviations')} className="text-blue-500">
@@ -216,7 +222,7 @@ const Privat = () => {
           </button>
           {!isCollapsed.deviations && <p>{deviations}</p>}
 
-          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('recommendations')}>
+          <h2 id="recommendations" className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('recommendations')}>
             4. EMPFEHLUNGEN:
           </h2>
           <button onClick={() => toggleCollapse('recommendations')} className="text-blue-500">
@@ -224,7 +230,7 @@ const Privat = () => {
           </button>
           {!isCollapsed.recommendations && <p>{recommendations}</p>}
 
-          <h2 className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('sources')}>
+          <h2 id="sources" className="text-xl font-semibold cursor-pointer" onClick={() => toggleCollapse('sources')}>
             5. QUELLENVERWEISE:
           </h2>
           <button onClick={() => toggleCollapse('sources')} className="text-blue-500">
