@@ -26,13 +26,12 @@ const Header = () => (
       <nav>
         <Link href="/" className="text-white text-lg mr-4">Home</Link>
         <Link href="/privat" className="text-white text-lg mr-4">Privat</Link>
-        <Link href="/professionell" className="text-white text-lg">Professionell</Link>
+        <Link href="/professionell" className="text-white text-lg mr-4">Professionell</Link>
+        <Link href="/guidelines" className="text-white text-lg">Guidelines</Link>
       </nav>
     </div>
   </header>
 );
-
-
 
 const RootLayout = ({ children }) => {
   return (
@@ -40,7 +39,6 @@ const RootLayout = ({ children }) => {
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
         <main>{children}</main>
-
       </body>
     </html>
   );
