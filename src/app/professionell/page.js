@@ -16,7 +16,7 @@ const Professionell = () => {
   const [pdfList, setPdfList] = useState([]);
   const [selectedPdfs, setSelectedPdfs] = useState([]);
   const [jsonOutput, setJsonOutput] = useState('');
-  const [isSourcesVisible, setIsSourcesVisible] = useState(true);
+  const [isSourcesVisible, setIsSourcesVisible] = useState(false);
 
   useEffect(() => {
     const fetchPdfs = async () => {
@@ -89,15 +89,17 @@ const Professionell = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground items-center justify-center mt-10 mb-10">
+
+      <h2 className="text-4xl font-bold mb-4">Geschlechtsabhängige Merkmale</h2>
+      <button 
+        onClick={() => setIsSourcesVisible(!isSourcesVisible)} 
+        className="mb-4 text-blue-600 hover:text-blue-800"
+      >
+        {isSourcesVisible ? 'Verfügbare Literatur schließen' : 'Verfügbare Literatur öffnen'}
+      </button>
       {isSourcesVisible && (
         <div className="relative w-1/2 p-4 border border-gray-300 rounded bg-gray-100 mb-4">
           <h3 className="text-2xl font-bold mt-4">Verfügbare Quellen</h3>
-          <button 
-            onClick={() => setIsSourcesVisible(false)} 
-            className="absolute top-2 right-2 text-blue-600 hover:text-blue-800"
-          >
-            Schließen
-          </button>
           <div className="mt-4">
             {pdfList.map((pdf) => (
               <div key={pdf} className="flex items-center mb-2 p-2 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
@@ -115,7 +117,7 @@ const Professionell = () => {
           </div>
         </div>
       )}
-      <h2 className="text-4xl font-bold mb-4">Geschlechtsabhängige Merkmale</h2>
+      <h2 className="text-4xl font-bold mb-4">Definition Merkmale durch Facharzt</h2>
       <form onSubmit={handleSubmit} className="w-1/2 space-y-4">
         <input
           type="text"
