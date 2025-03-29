@@ -11,6 +11,7 @@ export async function POST(request) {
     // Hier können Sie die Logik hinzufügen, um die CSV-Daten zu verarbeiten
     const lines = content.split('\n');
     const guidelines = lines.map(line => line.split(',')); // Beispiel für CSV-Verarbeitung
+    console.log(guidelines);
 
     const response = new Response(JSON.stringify(guidelines), { 
       status: 200,

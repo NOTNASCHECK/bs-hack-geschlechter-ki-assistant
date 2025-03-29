@@ -7,7 +7,8 @@ const client = new Mistral({ apiKey: apiKey });
 
 export async function POST(request) {
   console.log('POST request für Guideline_Empfehlungen.csv empfangen');
-  
+  const messages = await request.json();
+  const contentRequest = messages.messages[0].content;
   try {
     const filePath = path.join(process.cwd(), 'Paper', 'Guideline_Empfehlungen.csv');
     const content = await fs.promises.readFile(filePath, 'utf-8');
@@ -19,7 +20,7 @@ export async function POST(request) {
     // Senden der Guidelines an Mistral AI
     const chatResponse = await client.chat.complete({
       model: 'mistral-tiny',
-      messages: [{ role: 'user', content: JSON.stringify(guidelines) }],
+      messages: [{ role: 'user', content: JSON.stringify('Medizinische Anfrage: ' +contentRequest + 'Guidelines: ' + guidelines) }],
     });
 
     const response = new Response(JSON.stringify(chatResponse), { 
