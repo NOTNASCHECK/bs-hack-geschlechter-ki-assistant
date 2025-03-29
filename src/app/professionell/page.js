@@ -16,6 +16,7 @@ const Professionell = () => {
   const [pdfList, setPdfList] = useState([]);
   const [selectedPdfs, setSelectedPdfs] = useState([]);
   const [jsonOutput, setJsonOutput] = useState('');
+  const [isSourcesVisible, setIsSourcesVisible] = useState(true);
 
   useEffect(() => {
     const fetchPdfs = async () => {
@@ -88,6 +89,32 @@ const Professionell = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground items-center justify-center mt-10 mb-10">
+      {isSourcesVisible && (
+        <div className="relative w-1/2 p-4 border border-gray-300 rounded bg-gray-100 mb-4">
+          <h3 className="text-2xl font-bold mt-4">Verfügbare Quellen</h3>
+          <button 
+            onClick={() => setIsSourcesVisible(false)} 
+            className="absolute top-2 right-2 text-blue-600 hover:text-blue-800"
+          >
+            Schließen
+          </button>
+          <div className="mt-4">
+            {pdfList.map((pdf) => (
+              <div key={pdf} className="flex items-center mb-2 p-2 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                <input
+                  type="checkbox"
+                  id={pdf}
+                  value={pdf}
+                  checked={selectedPdfs.includes(pdf)}
+                  onChange={() => handleCheckboxChange(pdf)}
+                  className="mr-2 w-5 h-5"
+                />
+                <label htmlFor={pdf} className="text-lg">{pdf}</label>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       <h2 className="text-4xl font-bold mb-4">Geschlechtsabhängige Merkmale</h2>
       <form onSubmit={handleSubmit} className="w-1/2 space-y-4">
         <input
@@ -135,14 +162,14 @@ const Professionell = () => {
           placeholder="Ergebnis"
           value={formData.outcome}
           onChange={handleChange}
-          className="p-2 border border-gray-300 rounded w-full h-32"
+          className="p-2 border border-gray-300 rounded w-full h-16"
         />
         <textarea
           name="recommendation"
           placeholder="Empfehlung"
           value={formData.recommendation}
           onChange={handleChange}
-          className="p-2 border border-gray-300 rounded w-full h-32"
+          className="p-2 border border-gray-300 rounded w-full h-16"
         />
         <input
           type="text"
@@ -169,27 +196,11 @@ const Professionell = () => {
           </button>
         </div>
       </form>
-      <h3 className="text-2xl font-bold mt-4">Verfügbare PDFs</h3>
-      <div className="mt-4 w-1/2">
-        {pdfList.map((pdf) => (
-          <div key={pdf} className="flex items-center mb-2 p-2 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
-            <input
-              type="checkbox"
-              id={pdf}
-              value={pdf}
-              checked={selectedPdfs.includes(pdf)}
-              onChange={() => handleCheckboxChange(pdf)}
-              className="mr-2 w-5 h-5"
-            />
-            <label htmlFor={pdf} className="text-lg">{pdf}</label>
-          </div>
-        ))}
-      </div>
-      <h3 className="text-2xl font-bold mt-4">Geschlechtsabhängige Merkmal</h3>
+      <h3 className="text-2xl font-bold mt-4">Merkmal für Entscheidungshilfe</h3>
       <textarea
         value={jsonOutput}
         readOnly
-        className="mt-4 p-2 border border-gray-300 rounded w-1/2 h-64"
+        className="mt-4 p-2 border border-gray-300 rounded w-1/2 h-100"
       />
     </div>
   );
