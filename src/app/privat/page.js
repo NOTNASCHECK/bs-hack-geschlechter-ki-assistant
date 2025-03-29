@@ -22,7 +22,7 @@ const Privat = () => {
     feedback: true,
     deviations: true,
     sources: true,
-    recommendations: true,
+    recommendations: false,
   });
   
   const [isLoading, setIsLoading] = useState(false);
