@@ -26,9 +26,9 @@ const Header = () => {
         <h1 className="text-4xl font-bold">PrecisionAId</h1>
         <nav>
           <Link href="/" className={`text-white text-lg mr-4 ${pathname === '/' ? 'font-bold' : ''}`}>Home</Link>
-          <Link href="/privat" className={`text-white text-lg mr-4 ${pathname === '/privat' ? 'font-bold' : ''}`}>Privat</Link>
-          <Link href="/professionell" className={`text-white text-lg mr-4 ${pathname === '/professionell' ? 'font-bold' : ''}`}>Professionell</Link>
-          <Link href="/guidelines" className={`text-white text-lg ${pathname === '/guidelines' ? 'font-bold' : ''}`}>Guidelines</Link>
+          <Link href="/privat" className={`text-white text-lg mr-4 ${pathname === '/privat' ? 'font-bold' : ''}`}>Praxis</Link>
+          <Link href="/professionell" className={`text-white text-lg mr-4 ${pathname === '/professionell' ? 'font-bold' : ''}`}>Anbieter</Link>
+          
         </nav>
       </div>
     </header>
