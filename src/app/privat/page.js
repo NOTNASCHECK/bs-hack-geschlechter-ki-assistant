@@ -113,7 +113,7 @@ const Privat = () => {
           className="p-2 border border-gray-300 rounded mb-4 w-full"
         >
           <option value="">Häufige Fragen auswählen</option>
-          <option value="Behandlung optimal nach Leitlinien?">Behandlung optimal nach Leitlinien?</option>
+          <option value="Behandlung optimal nach Leitlinien?">Ist die aktuelle Behandlung leitliniengerecht?</option>
           <option value="Was wäre ein Behandlungsvorschlag?">Was wäre ein Behandlungsvorschlag?</option>
           <option value="Gibt es weiter Diagnostik die sinnvoll ist?">Gibt es weiter Diagnostik die sinnvoll ist?</option>
           <option value="Welche Behandlungsempfehlungen gibt es über die Leitlinien hinaus bzw. davon Abweichend?">Welche Behandlungsempfehlungen gibt es über die Leitlinien hinaus bzw. davon Abweichend?</option>
